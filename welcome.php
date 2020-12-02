@@ -1,8 +1,6 @@
 <?php
-// Initialize the session
 session_start();
 
-// Check if the user is logged in, if not then redirect him to login page
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     header("location: login.php");
     exit;
@@ -54,12 +52,10 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     <br>
     <div style="margin: 5%; border: 3px solid black;">
         <?php
-        //incluye la clase Libro y CrudLibro
         require_once('crud_libro.php');
         require_once('libro.php');
         $crud = new CrudLibro();
         $libro = new Libro();
-        //obtiene todos los libros con el método mostrar de la clase crud
         $listaLibros = $crud->mostrar();
         ?>
 
